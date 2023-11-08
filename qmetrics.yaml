@@ -1,0 +1,42 @@
+LogLevel: info
+CcaaSUrl: https://perf-6.ixcc-sandbox.avayacloud.com
+CcaaSMetricAsyncRouteTemplate: /api/queue/v1beta/accounts/%s/metrics
+CcaaSMetricSyncRouteTemplate: /api/queue-metrics/v1beta1/accounts/%s/queues/%s/channels/%s/metrics
+KeyCloakUrl: https://perf-6.ixcc-sandbox.avayacloud.com
+KeyCloakRouteTemplate: /auth/realms/%s/protocol/openid-connect/token
+CallbackUrl: https://ixcc-perf-6-locust.westeurope.cloudapp.azure.com:8089
+QueryHatchIntervalSeconds: 2
+TokenRefreshIntervalSeconds: 300
+Env: qmetric_1_perf_14
+SentryFile: /main/stopalltraffic.txt
+EnableFastHttpCompression: false
+HttpUserAgentHeaderContent: qmetric
+WebhookCertFilePath: /main/cert.pem
+WebhookCertKeyFilePath: /main/key.pem
+EnableDatadog: true
+DatadogDelayIntervalSecs: 30
+LogMetricsIntervalSecs: 30
+TrafficRunDurationHours: 0.1
+GeneralHttpTimeoutSecs: 30
+NumHttpRequestAttempts: 3
+HttpRetryDelaySecs: 5
+LogOutputType: file
+LogOutputFilePath: /main/logs/qmetrics.log
+EnableColorOutput: false
+Tenants:
+
+  NumConcurrentUsers: 50
+  InterQMetricQueryDelayMSecs: 5000
+  CallbackTimeoutSecs: 30
+RocketChat:
+  Enable: false
+  Url: https://avaya.rocket.chat
+  PostMessageRoute: /hooks/63986c8ace051b60b01a2e07/yCBmxjbrbSDQeRbZm2pJffeMpfwybLpRsC5HFXjACecK4pSk
+  Channel: "ccaas-env-perf-6"
+  VerboseMessage: false
+  AlertUsers:
+  - UserId: dempseyc
+  StartBanners:
+  - Caption: "START OF QMETRIC API TRAFFIC RUN"
+    Description: "Traffic Run Across 1 Account - Sprint 162 - Single User Sanity Check"
+    Emoji: ":rocket:"
